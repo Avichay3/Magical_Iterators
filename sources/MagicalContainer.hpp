@@ -1,1 +1,17 @@
-// should implement a three different iterators
+#include <vector>
+
+namespace ariel{
+    class MagicalContainer{
+
+
+
+
+
+
+
+
+
+
+        
+    };
+}
