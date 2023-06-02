@@ -12,6 +12,8 @@ namespace ariel{
         */
             std::vector<int> theContainer;
 
+            bool isPrime(int elem);
+
             
         public:
             MagicalContainer(); //the constructor
@@ -36,7 +38,7 @@ namespace ariel{
 
                 public:
                     BaseIterator() = default; // default constructor
-                    BaseIterator(const MagicalContainer& container, size_t position); // constructor
+                    BaseIterator(MagicalContainer *container, size_t position); // constructor
                     virtual ~BaseIterator();//destructor, virtual for the ability to override it.
                     
                     // operators overloading
