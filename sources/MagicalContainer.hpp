@@ -1,110 +1,113 @@
-#include <vector>
-#include <iostream>
+#pragma once
 
-namespace ariel{
+#include <vector>
+
+namespace ariel {
     class MagicalContainer{
         private:
         /*
-        The private vector to:
+        The private vectors to:
         "Create three custom iterator classes named "AscendingIterator", "SideCrossIterator", and "PrimeIterator"
         that will allow traversal of elements in the MagicalContainer class in ascending order, 
         cross order, and prime numbers only, respectively."
         */
-            std::vector<int> theContainer;
+            std::vector<int> TheContainer;
+            std::vector<int*> AscendingIter;
+            std::vector<int*> PrimeIter;
+            std::vector<int*> SideCrossIter;
 
-            bool isPrime(int elem);
+            bool isPrime(int element);
+            int contains(int element);
+        
 
-            
         public:
-            MagicalContainer(); //the constructor
-            /*
-            functions for the "Implement necessary methods for adding elements, 
-            removing elements, and retrieving the size of the container".
-            */
-            void addElement(int element){ //inline implenetation
-                this->theContainer.push_back(element);
-            }
-
+            MagicalContainer();
+            void addElement(int element);
             void removeElement(int element);
+            int size();
 
-            int size(){ //inline implenetation
-                return this->theContainer.size(); 
-            } 
-            
+        
 
 
-         class BaseIterator { // Abstract class that defines the common interface for all iterators
-                protected: //for it can be accessed from the derived classes
-                    const MagicalContainer *container; //reference to object
-                    std::size_t position; //current position
+        
+        class BaseIterator {
+            private:
+                MagicalContainer* _container;
+                std::size_t _position;
 
-                public:
-                    BaseIterator(); // default constructor
-                    BaseIterator(MagicalContainer *container, size_t position); // constructor
-                    virtual ~BaseIterator();//destructor, virtual for the ability to override it.
-                    
-                    // operators overloading
-                    bool operator==(const BaseIterator& other) ; //compare iterators for equality and inequality.
-                    bool operator!=(const BaseIterator& other) ; //compare iterators for equality and inequality.
-                    bool operator<(const BaseIterator& other) ; //compare iterators based on their positions.
-                    bool operator>(const BaseIterator& other) ; //compare iterators based on their positions.
-                    
-                    void operator*();
-                    BaseIterator& operator++(); // pre-increment operator
+            public:
+                BaseIterator();
+                BaseIterator(MagicalContainer* container, std::size_t position);
+                BaseIterator(const BaseIterator& other);
+                ~BaseIterator();
 
-         };
 
-        /*
-        inherited class, have access to all protected && public of the BaseIterator class
-        */
-         class AscendingIterator : public BaseIterator{
+                bool operator==(const BaseIterator& other) const;
+                bool operator!=(const BaseIterator& other) const;
+                bool operator<(const BaseIterator& other) const;
+                bool operator>(const BaseIterator& other) const;
+                
+                
+
+                int operator*();
+
+                int* getLocationPtr();
+                void setLocationPtr(int* newlocptr);
+                int getPosition();
+                void setPosition(int newloc);
+
+        };
+
+
+        class AscendingIterator : public BaseIterator {
             public:
                 AscendingIterator();
-                AscendingIterator(const MagicalContainer &ascending);
-                ~AscendingIterator(); //destructor
+                AscendingIterator(const MagicalContainer& magical);
+                AscendingIterator(const AscendingIterator& asci);
+                ~AscendingIterator();
 
-                //operators overloading
-                AscendingIterator &operator=(const AscendingIterator &other);
+                AscendingIterator& operator=(const AscendingIterator& other);
 
-                AscendingIterator begin();              
+                AscendingIterator& operator++();
+
+                AscendingIterator begin();
                 AscendingIterator end();
+        };
 
-         };
 
-
-        /*
-        inherited class, have access to all protected && public of the BaseIterator class
-        */
-         class PrimeIterator : public BaseIterator{
+        class PrimeIterator : public BaseIterator {
             public:
                 PrimeIterator();
-                PrimeIterator(const MagicalContainer &other);
-                ~PrimeIterator();//destructor
+                PrimeIterator(const MagicalContainer& magical);
+                PrimeIterator(const PrimeIterator& asci);
+                ~PrimeIterator();
 
-                //operators overloading
-                PrimeIterator &operator=(const PrimeIterator &other);
+                PrimeIterator& operator=(const PrimeIterator& other);
 
+                PrimeIterator& operator++();
 
                 PrimeIterator begin();
                 PrimeIterator end();
-         };
+        };
 
 
-         class SideCrossIterator : public BaseIterator{
+        class SideCrossIterator : public BaseIterator {
             public:
                 SideCrossIterator();
-                SideCrossIterator(const MagicalContainer &other);
-                ~SideCrossIterator();//destructor
+                SideCrossIterator(const MagicalContainer& magical);
+                SideCrossIterator(const SideCrossIterator& base_iter);
+                ~SideCrossIterator();
 
-                //operators overloading
-                SideCrossIterator &operator=(const SideCrossIterator &other);
+                SideCrossIterator& operator=(const SideCrossIterator& other);
 
+                SideCrossIterator& operator++();
 
                 SideCrossIterator begin();
                 SideCrossIterator end();
-         };
-    
-
+        };
 
     };
+
 }
+
+
