@@ -21,21 +21,19 @@ void MagicalContainer::removeElement(int element){
     this->theContainer.pop_back();
 }
 
-MagicalContainer::BaseIterator::BaseIterator(){}
-
+MagicalContainer::BaseIterator::BaseIterator(){} // first constructor with no parameters
 MagicalContainer::BaseIterator::BaseIterator(MagicalContainer *container, size_t position){}
-
 MagicalContainer::BaseIterator::~BaseIterator(){}
 
 
 // Dummy implementations for overloaded operators
 bool MagicalContainer::BaseIterator::operator==(const BaseIterator &other){return false;}
-
 bool MagicalContainer::BaseIterator::operator!=(const BaseIterator &other){return false;}
-
 bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other){return false;}
-
 bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other){return false;}
 
 
-
+//The ascending iterator
+MagicalContainer::AscendingIterator::AscendingIterator(){}
+MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magic){}
+MagicalContainer::AscendingIterator::~AscendingIterator(){}

@@ -27,17 +27,19 @@ namespace ariel{
 
             void removeElement(int element);
 
-            int size(){ this->theContainer.size(); } //inline implenetation
+            int size(){ //inline implenetation
+                return this->theContainer.size(); 
+            } 
             
 
 
          class BaseIterator { // Abstract class that defines the common interface for all iterators
                 protected: //for it can be accessed from the derived classes
-                    const MagicalContainer& container; //reference to object
+                    const MagicalContainer *container; //reference to object
                     std::size_t position; //current position
 
                 public:
-                    BaseIterator() = default; // default constructor
+                    BaseIterator(); // default constructor
                     BaseIterator(MagicalContainer *container, size_t position); // constructor
                     virtual ~BaseIterator();//destructor, virtual for the ability to override it.
                     
@@ -57,7 +59,7 @@ namespace ariel{
         */
          class AscendingIterator : public BaseIterator{
             public:
-                AscendingIterator() = default;
+                AscendingIterator();
                 AscendingIterator(const MagicalContainer &ascending);
                 ~AscendingIterator(); //destructor
 
@@ -75,7 +77,7 @@ namespace ariel{
         */
          class PrimeIterator : public BaseIterator{
             public:
-                PrimeIterator() = default;
+                PrimeIterator();
                 PrimeIterator(const MagicalContainer &other);
                 ~PrimeIterator();//destructor
 
@@ -90,7 +92,7 @@ namespace ariel{
 
          class SideCrossIterator : public BaseIterator{
             public:
-                SideCrossIterator() = default;
+                SideCrossIterator();
                 SideCrossIterator(const MagicalContainer &other);
                 ~SideCrossIterator();//destructor
 
