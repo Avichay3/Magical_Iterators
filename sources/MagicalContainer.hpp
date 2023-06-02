@@ -60,11 +60,34 @@ namespace ariel{
                 ~AscendingIterator(); //destructor
 
                 //operators overloading
-                AscendingIterator &operator=(const AscendingIterator &other)
-                
+                AscendingIterator operator=(const AscendingIterator &other);
+
+                AscendingIterator begin();              
+                AscendingIterator end();
+
+         };
 
 
-         }
+        /*
+        inherited class, have access to all protected && public of the BaseIterator class
+        */
+         class PrimeIterator : public BaseIterator{
+            public:
+                PrimeIterator() = default;
+                PrimeIterator(const MagicalContainer &other);
+                ~PrimeIterator();//destructor
+
+                //operators overloading
+                PrimeIterator operator=(const PrimeIterator &other);
+
+
+                PrimeIterator begin();
+                PrimeIterator end();
+
+
+
+
+         };
 
     };
 }
