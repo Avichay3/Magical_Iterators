@@ -32,12 +32,12 @@ namespace ariel{
          class BaseIterator { // Abstract class that defines the common interface for all iterators
                 protected: //for it can be accessed from the derived classes
                     const MagicalContainer& container; //reference to object
-                    size_t position; //current position
+                    std::size_t position; //current position
 
                 public:
                     BaseIterator() = default; // default constructor
                     BaseIterator(const MagicalContainer& container, size_t position); // constructor
-                    virtual ~BaseIterator();//distructor, virtual for the ability to override it.
+                    virtual ~BaseIterator();//destructor, virtual for the ability to override it.
                     
                     // operators overloading
                     bool operator==(const BaseIterator& other) const; //compare iterators for equality and inequality.
@@ -49,6 +49,22 @@ namespace ariel{
                     BaseIterator& operator++(); // pre-increment operator
 
          };
+
+        /*
+        inherited class, have access to all protected && public of the BaseIterator class
+        */
+         class AscendingIterator : public BaseIterator{
+            public:
+                AscendingIterator() = default;
+                AscendingIterator(const MagicalContainer &ascending);
+                ~AscendingIterator(); //destructor
+
+                //operators overloading
+                AscendingIterator &operator=(const AscendingIterator &other)
+                
+
+
+         }
 
     };
 }
