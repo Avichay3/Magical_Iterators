@@ -42,10 +42,10 @@ namespace ariel{
                     virtual ~BaseIterator();//destructor, virtual for the ability to override it.
                     
                     // operators overloading
-                    bool operator==(const BaseIterator& other) const; //compare iterators for equality and inequality.
-                    bool operator!=(const BaseIterator& other) const; //compare iterators for equality and inequality.
-                    bool operator<(const BaseIterator& other) const; //compare iterators based on their positions.
-                    bool operator>(const BaseIterator& other) const; //compare iterators based on their positions.
+                    bool operator==(const BaseIterator& other) ; //compare iterators for equality and inequality.
+                    bool operator!=(const BaseIterator& other) ; //compare iterators for equality and inequality.
+                    bool operator<(const BaseIterator& other) ; //compare iterators based on their positions.
+                    bool operator>(const BaseIterator& other) ; //compare iterators based on their positions.
                     
                     void operator*();
                     BaseIterator& operator++(); // pre-increment operator
