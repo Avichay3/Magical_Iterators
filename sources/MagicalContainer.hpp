@@ -29,18 +29,20 @@ namespace ariel{
                     size_t position; //current position
 
                 public:
+                    BaseIterator() = default; // default constructor
                     BaseIterator(const MagicalContainer& container, size_t position); // constructor
-                    virtual ~BaseIterator();//for the ability to override it
+                    virtual ~BaseIterator();//distructor, virtual for the ability to override it.
                     
                     // operators overloading
-                    bool operator>(const BaseIterator& other) const; //compare iterators based on their positions.
-                    bool operator<(const BaseIterator& other) const; //compare iterators based on their positions.
                     bool operator==(const BaseIterator& other) const; //compare iterators for equality and inequality.
                     bool operator!=(const BaseIterator& other) const; //compare iterators for equality and inequality.
-
+                    bool operator<(const BaseIterator& other) const; //compare iterators based on their positions.
+                    bool operator>(const BaseIterator& other) const; //compare iterators based on their positions.
+                    
+                    void operator*();
                     BaseIterator& operator++(); // pre-increment operator
 
-
+         };
 
     };
 }
