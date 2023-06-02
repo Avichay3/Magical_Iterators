@@ -97,7 +97,7 @@ namespace ariel{
                 ~SideCrossIterator();//destructor
 
                 //operators overloading
-                SideCrossIterator operator=(const SideCrossIterator &other);
+                SideCrossIterator &operator=(const SideCrossIterator &other);
 
 
                 SideCrossIterator begin();

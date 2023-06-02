@@ -56,3 +56,15 @@ MagicalContainer::PrimeIterator&MagicalContainer::PrimeIterator::operator=(const
 }
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::begin(){return *this;}
 MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end(){return *this;}
+
+
+//The SideCross iterator
+MagicalContainer::SideCrossIterator::SideCrossIterator(){}
+MagicalContainer::SideCrossIterator::SideCrossIterator(const MagicalContainer& magical){}
+MagicalContainer::SideCrossIterator::~SideCrossIterator(){}
+
+MagicalContainer::SideCrossIterator&MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other){
+    return *this;
+}
+MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::begin(){return *this;}
+MagicalContainer::SideCrossIterator MagicalContainer::SideCrossIterator::end(){return *this;}
