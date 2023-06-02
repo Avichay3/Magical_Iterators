@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 namespace ariel{
     class MagicalContainer{
@@ -9,7 +10,7 @@ namespace ariel{
         that will allow traversal of elements in the MagicalContainer class in ascending order, 
         cross order, and prime numbers only, respectively."
         */
-            std::vector<int> TheContainer;
+            std::vector<int> theContainer;
 
             
         public:
@@ -18,9 +19,14 @@ namespace ariel{
             functions for the "Implement necessary methods for adding elements, 
             removing elements, and retrieving the size of the container".
             */
-            void addElement(int element)const;
-            void removeElement(int element)const;
-            int size() const;
+            void addElement(int element){ //inline implenetation
+                this->theContainer.push_back(element);
+            }
+
+            void removeElement(int element);
+
+            int size(){ this->theContainer.size(); } //inline implenetation
+            
 
 
          class BaseIterator { // Abstract class that defines the common interface for all iterators
