@@ -83,11 +83,24 @@ namespace ariel{
 
                 PrimeIterator begin();
                 PrimeIterator end();
-
-
-
-
          };
+
+
+         class SideCrossIterator : public BaseIterator{
+            public:
+                SideCrossIterator() = default;
+                SideCrossIterator(const MagicalContainer &other);
+                ~SideCrossIterator();//destructor
+
+                //operators overloading
+                SideCrossIterator operator=(const SideCrossIterator &other);
+
+
+                SideCrossIterator begin();
+                SideCrossIterator end();
+         };
+    
+
 
     };
 }
