@@ -82,7 +82,7 @@ namespace ariel{
                 ~PrimeIterator();//destructor
 
                 //operators overloading
-                PrimeIterator operator=(const PrimeIterator &other);
+                PrimeIterator &operator=(const PrimeIterator &other);
 
 
                 PrimeIterator begin();
