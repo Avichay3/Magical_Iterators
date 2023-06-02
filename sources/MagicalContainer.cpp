@@ -21,6 +21,7 @@ void MagicalContainer::removeElement(int element){
     this->theContainer.pop_back();
 }
 
+//The base iterator, inherited from ascending, prime, and side_cross iterator classes
 MagicalContainer::BaseIterator::BaseIterator(){} // first constructor with no parameters
 MagicalContainer::BaseIterator::BaseIterator(MagicalContainer *container, size_t position){}
 MagicalContainer::BaseIterator::~BaseIterator(){}
@@ -37,3 +38,9 @@ bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other){return
 MagicalContainer::AscendingIterator::AscendingIterator(){}
 MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magic){}
 MagicalContainer::AscendingIterator::~AscendingIterator(){}
+
+MagicalContainer::AscendingIterator&MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){
+    return *this;
+}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return *this;}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return *this;}

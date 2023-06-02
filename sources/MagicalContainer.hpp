@@ -64,7 +64,7 @@ namespace ariel{
                 ~AscendingIterator(); //destructor
 
                 //operators overloading
-                AscendingIterator operator=(const AscendingIterator &other);
+                AscendingIterator &operator=(const AscendingIterator &other);
 
                 AscendingIterator begin();              
                 AscendingIterator end();
