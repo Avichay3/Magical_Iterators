@@ -45,12 +45,7 @@ namespace ariel {
                 bool operator<(const BaseIterator& other) const;
                 bool operator>(const BaseIterator& other) const;
                 
-                
-
                 int operator*();
-
-               
-
         };
 
 
