@@ -17,8 +17,6 @@ namespace ariel {
             std::vector<int*> SideCrossIter;
 
             bool isPrime(int element);
-            int contains(int element);
-        
 
         public:
             MagicalContainer();
@@ -51,10 +49,7 @@ namespace ariel {
 
                 int operator*();
 
-                int* getLocationPtr();
-                void setLocationPtr(int* newlocptr);
-                int getPosition();
-                void setPosition(int newloc);
+               
 
         };
 
@@ -63,7 +58,7 @@ namespace ariel {
             public:
                 AscendingIterator();
                 AscendingIterator(const MagicalContainer& magical);
-                AscendingIterator(const AscendingIterator& asci);
+                AscendingIterator(const AscendingIterator& ascen_iter);
                 ~AscendingIterator();
 
                 AscendingIterator& operator=(const AscendingIterator& other);
@@ -79,7 +74,7 @@ namespace ariel {
             public:
                 PrimeIterator();
                 PrimeIterator(const MagicalContainer& magical);
-                PrimeIterator(const PrimeIterator& asci);
+                PrimeIterator(const PrimeIterator& prime_iter);
                 ~PrimeIterator();
 
                 PrimeIterator& operator=(const PrimeIterator& other);
@@ -95,7 +90,7 @@ namespace ariel {
             public:
                 SideCrossIterator();
                 SideCrossIterator(const MagicalContainer& magical);
-                SideCrossIterator(const SideCrossIterator& base_iter);
+                SideCrossIterator(const SideCrossIterator& side_cross_iter);
                 ~SideCrossIterator();
 
                 SideCrossIterator& operator=(const SideCrossIterator& other);

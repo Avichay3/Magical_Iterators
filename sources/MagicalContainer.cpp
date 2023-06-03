@@ -1,20 +1,34 @@
 #include "MagicalContainer.hpp"
+#include <algorithm>
 
 using namespace ariel;
 
 
 bool MagicalContainer::isPrime(int element){
-    return false;
+    if(element <= 1){ return false; }
+    for(int i=2; i < element; i++){
+        if(element % i == 0){
+            return false;
+        }
+    }
+    return true;
+    
 }
-int MagicalContainer::contains(int element){
-    return 0;
-}
+//int MagicalContainer::contains(int element){ return 0;}
 
 
 MagicalContainer::MagicalContainer(){}
-void MagicalContainer::addElement(int element){}
-void MagicalContainer::removeElement(int element){}
-int MagicalContainer::size(){return 0;}
+
+void MagicalContainer::addElement(int element){
+    TheContainer.push_back(element);
+}
+
+void MagicalContainer::removeElement(int element){
+    TheContainer.erase(std::remove(TheContainer.begin(), TheContainer.end(), element),TheContainer.end());
+}
+int MagicalContainer::size(){
+    return TheContainer.size();
+}
 
 
 
@@ -24,33 +38,14 @@ MagicalContainer::BaseIterator::BaseIterator(MagicalContainer* container, std::s
 MagicalContainer::BaseIterator::BaseIterator(const BaseIterator& base_iter){}
 MagicalContainer::BaseIterator::~BaseIterator(){}
 
-bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{
-    return false;
-}
-bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other) const{
-    return false;
-}
-bool MagicalContainer::BaseIterator::operator==(const BaseIterator &other) const{
-    return false;
-}
-bool MagicalContainer::BaseIterator::operator!=(const BaseIterator &other) const{
-    return false;
-}
+bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{return false;}
+bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other) const{return false;}
+bool MagicalContainer::BaseIterator::operator==(const BaseIterator &other) const{return false;}
+bool MagicalContainer::BaseIterator::operator!=(const BaseIterator &other) const{return false;}
 
 int MagicalContainer::BaseIterator::operator*(){return 0;}
 
-int* MagicalContainer::BaseIterator::getLocationPtr(){
-    return nullptr;
-}
-void MagicalContainer::BaseIterator::setLocationPtr(int* newlocptr){
 
-}
-int MagicalContainer::BaseIterator::getPosition(){
-    return 0;
-}
-void MagicalContainer::BaseIterator::setPosition(int newloc){
-
-}
 
 
 //AscendingIterator class
@@ -59,19 +54,11 @@ MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& m
 MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator& asci){}
 MagicalContainer::AscendingIterator::~AscendingIterator(){}
 
-MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){
-    return (*this);
-}
-MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){
-    return (*this);
-}
+MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){return (*this);}
+MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){return (*this);}
 
-MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){
-    return (*this);
-}
-MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){
-    return (*this);
-}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return (*this);}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return (*this);}
 
 
 //PrimeIterator class
@@ -99,9 +86,7 @@ MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end(){
 MagicalContainer::SideCrossIterator::SideCrossIterator(){
 
 }
-MagicalContainer::SideCrossIterator::SideCrossIterator(const MagicalContainer& magical){
-
-}
+MagicalContainer::SideCrossIterator::SideCrossIterator(const MagicalContainer& magical){}
 MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator& base_iter){
 
 }
