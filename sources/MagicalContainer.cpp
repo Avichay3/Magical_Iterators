@@ -33,9 +33,14 @@ int MagicalContainer::size(){
 
 
 //Base class iterator        
-MagicalContainer::BaseIterator::BaseIterator(){}
-MagicalContainer::BaseIterator::BaseIterator(MagicalContainer* container, std::size_t position){}
-MagicalContainer::BaseIterator::BaseIterator(const BaseIterator& base_iter){}
+MagicalContainer::BaseIterator::BaseIterator() : _container(nullptr), _position(0){}
+
+MagicalContainer::BaseIterator::BaseIterator(MagicalContainer* container, std::size_t position) : 
+        _container(container), _position(position){}
+
+MagicalContainer::BaseIterator::BaseIterator(const BaseIterator& base_iter):  
+        _container(base_iter._container),_position(base_iter._position){}
+
 MagicalContainer::BaseIterator::~BaseIterator(){}
 
 bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{return false;}
