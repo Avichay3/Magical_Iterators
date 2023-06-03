@@ -1,5 +1,7 @@
 #include "MagicalContainer.hpp"
 #include <algorithm>
+#include <stdexcept>
+using namespace std;
 
 using namespace ariel;
 
@@ -43,27 +45,31 @@ MagicalContainer::BaseIterator::BaseIterator(const BaseIterator& base_iter):
 
 MagicalContainer::BaseIterator::~BaseIterator(){}
 
-bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{return false;}
-bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other) const{return false;}
-bool MagicalContainer::BaseIterator::operator==(const BaseIterator &other) const{return false;}
-bool MagicalContainer::BaseIterator::operator!=(const BaseIterator &other) const{return false;}
+bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{
+    return this->_position > other._position;
+}
 
-int MagicalContainer::BaseIterator::operator*(){return 0;}
+bool MagicalContainer::BaseIterator::operator<(const BaseIterator &other) const{
+    return _position < other._position;
+}
 
+bool MagicalContainer::BaseIterator::operator==(const BaseIterator &other) const{
+    return (_container == other._container) && (_position == other._position);
+}
 
+bool MagicalContainer::BaseIterator::operator!=(const BaseIterator &other) const{
+    return !(*this == other);
+}
 
+int MagicalContainer::BaseIterator::operator*(){
+    if(_container){
+        return _container->TheContainer[_position];
+    }
+    else{
+        throw std::runtime_error("Pointing to a Non-valid container");
+    }
+}
 
-//AscendingIterator class
-MagicalContainer::AscendingIterator::AscendingIterator(){}
-MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magical){}
-MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator& asci){}
-MagicalContainer::AscendingIterator::~AscendingIterator(){}
-
-MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){return (*this);}
-MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){return (*this);}
-
-MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return (*this);}
-MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return (*this);}
 
 
 //PrimeIterator class
@@ -87,17 +93,29 @@ MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end(){
 }
 
 
+
+
+//AscendingIterator class
+MagicalContainer::AscendingIterator::AscendingIterator(){}
+MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magical){}
+MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator& asci){}
+MagicalContainer::AscendingIterator::~AscendingIterator(){}
+
+MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){return (*this);}
+MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){return (*this);}
+
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return (*this);}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return (*this);}
+
+
+
+
+
 //SideCrossIterator class
-MagicalContainer::SideCrossIterator::SideCrossIterator(){
-
-}
+MagicalContainer::SideCrossIterator::SideCrossIterator(){}
 MagicalContainer::SideCrossIterator::SideCrossIterator(const MagicalContainer& magical){}
-MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator& base_iter){
-
-}
-MagicalContainer::SideCrossIterator::~SideCrossIterator(){
-
-}
+MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator& base_iter){}
+MagicalContainer::SideCrossIterator::~SideCrossIterator(){}
 
 MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other){
     return (*this);
