@@ -37,10 +37,12 @@ TEST_CASE("add/remove the same element check"){
     SUBCASE("remove the same element and check if throw"){
         MagicalContainer TheContainer;
         TheContainer.addElement(1);
-        CHECK(TheContainer.size() == 1);
+        TheContainer.addElement(2);
+        CHECK(TheContainer.size() == 2);
         TheContainer.removeElement(1);
-        CHECK(TheContainer.size() == 0);
+        CHECK(TheContainer.size() == 1);
         CHECK_THROWS(TheContainer.removeElement(1));
+        CHECK(TheContainer.size() == 1);
     }
 }
 
