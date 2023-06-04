@@ -12,9 +12,9 @@ namespace ariel {
         cross order, and prime numbers only, respectively."
         */
             std::vector<int> TheContainer;
-            std::vector<int*> AscendingIter;
-            std::vector<int*> PrimeIter;
-            std::vector<int*> SideCrossIter;
+            std::vector<const int*> AscendingIter;
+            std::vector<const int*> PrimeIter;
+            std::vector<const int*> SideCrossIter;
 
             bool isPrime(int element);
 
