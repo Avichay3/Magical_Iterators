@@ -16,7 +16,6 @@ bool MagicalContainer::isPrime(int element){
     return true;
     
 }
-//int MagicalContainer::contains(int element){ return 0;}
 
 
 MagicalContainer::MagicalContainer(){}
@@ -36,7 +35,7 @@ void MagicalContainer::removeElement(int element){
     TheContainer.erase(it);
 }
 
-int MagicalContainer::size(){
+int MagicalContainer::size()const{
     return TheContainer.size();
 }
 
@@ -51,7 +50,6 @@ MagicalContainer::BaseIterator::BaseIterator(MagicalContainer* container, std::s
 MagicalContainer::BaseIterator::BaseIterator(const BaseIterator& base_iter):  
         _container(base_iter._container),_position(base_iter._position){}
 
-MagicalContainer::BaseIterator::~BaseIterator(){}
 
 bool MagicalContainer::BaseIterator::operator>(const BaseIterator &other) const{
     return this->_position > other._position;
@@ -84,7 +82,6 @@ int MagicalContainer::BaseIterator::operator*(){
 MagicalContainer::PrimeIterator::PrimeIterator(){}
 MagicalContainer::PrimeIterator::PrimeIterator(const MagicalContainer& magical){}
 MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator& asci){}
-MagicalContainer::PrimeIterator::~PrimeIterator(){}
 
 MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(const PrimeIterator &other){
     return (*this);
@@ -105,9 +102,12 @@ MagicalContainer::PrimeIterator MagicalContainer::PrimeIterator::end(){
 
 //AscendingIterator class
 MagicalContainer::AscendingIterator::AscendingIterator(){}
-MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magical){}
-MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator& asci){}
-MagicalContainer::AscendingIterator::~AscendingIterator(){}
+
+MagicalContainer::AscendingIterator::AscendingIterator(const MagicalContainer& magical) :
+         BaseIterator(const_cast<MagicalContainer*>(&magical), 0) {}
+
+MagicalContainer::AscendingIterator::AscendingIterator(const AscendingIterator& ascen_iter){}
+
 
 MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator=(const AscendingIterator &other){return (*this);}
 MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){return (*this);}
@@ -123,7 +123,6 @@ MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){r
 MagicalContainer::SideCrossIterator::SideCrossIterator(){}
 MagicalContainer::SideCrossIterator::SideCrossIterator(const MagicalContainer& magical){}
 MagicalContainer::SideCrossIterator::SideCrossIterator(const SideCrossIterator& base_iter){}
-MagicalContainer::SideCrossIterator::~SideCrossIterator(){}
 
 MagicalContainer::SideCrossIterator &MagicalContainer::SideCrossIterator::operator=(const SideCrossIterator &other){
     return (*this);

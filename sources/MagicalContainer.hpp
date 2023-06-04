@@ -22,7 +22,7 @@ namespace ariel {
             MagicalContainer();
             void addElement(int element);
             void removeElement(int element);
-            int size();
+            int size() const;
 
         
 
@@ -37,7 +37,7 @@ namespace ariel {
                 BaseIterator();
                 BaseIterator(MagicalContainer* container, std::size_t position);
                 BaseIterator(const BaseIterator& other);
-                ~BaseIterator();
+                ~BaseIterator() = default;
 
 
                 bool operator==(const BaseIterator& other) const;
@@ -54,7 +54,7 @@ namespace ariel {
                 AscendingIterator();
                 AscendingIterator(const MagicalContainer& magical);
                 AscendingIterator(const AscendingIterator& ascen_iter);
-                ~AscendingIterator();
+                ~AscendingIterator() = default;
 
                 AscendingIterator& operator=(const AscendingIterator& other);
 
@@ -70,7 +70,7 @@ namespace ariel {
                 PrimeIterator();
                 PrimeIterator(const MagicalContainer& magical);
                 PrimeIterator(const PrimeIterator& prime_iter);
-                ~PrimeIterator();
+                ~PrimeIterator() = default;
 
                 PrimeIterator& operator=(const PrimeIterator& other);
 
@@ -86,7 +86,7 @@ namespace ariel {
                 SideCrossIterator();
                 SideCrossIterator(const MagicalContainer& magical);
                 SideCrossIterator(const SideCrossIterator& side_cross_iter);
-                ~SideCrossIterator();
+                ~SideCrossIterator() = default;
 
                 SideCrossIterator& operator=(const SideCrossIterator& other);
 
