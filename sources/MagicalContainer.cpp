@@ -22,12 +22,20 @@ bool MagicalContainer::isPrime(int element){
 MagicalContainer::MagicalContainer(){}
 
 void MagicalContainer::addElement(int element){
+    if (std::find(TheContainer.begin(), TheContainer.end(), element) != TheContainer.end()) {
+        throw std::runtime_error("Element is already in the container");
+    }    
     TheContainer.push_back(element);
 }
 
 void MagicalContainer::removeElement(int element){
-    TheContainer.erase(std::remove(TheContainer.begin(), TheContainer.end(), element),TheContainer.end());
+    auto it = std::find(TheContainer.begin(), TheContainer.end(), element);
+    if (it == TheContainer.end()) {
+        throw std::runtime_error("Element does not exist in the container");
+    }
+    TheContainer.erase(it);
 }
+
 int MagicalContainer::size(){
     return TheContainer.size();
 }
