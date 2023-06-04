@@ -23,7 +23,7 @@ namespace ariel {
             void addElement(int element);
             void removeElement(int element);
             int size() const;
-
+            
         
 
 
@@ -68,7 +68,7 @@ namespace ariel {
         class PrimeIterator : public BaseIterator {
             public:
                 PrimeIterator();
-                PrimeIterator(const MagicalContainer& magical);
+                PrimeIterator(MagicalContainer& magical);
                 PrimeIterator(const PrimeIterator& prime_iter);
                 ~PrimeIterator() = default;
 

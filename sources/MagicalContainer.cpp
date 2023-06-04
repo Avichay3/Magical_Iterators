@@ -6,6 +6,7 @@ using namespace std;
 using namespace ariel;
 
 
+
 bool MagicalContainer::isPrime(int element){
     if(element <= 1){ return false; }
     for(int i=2; i < element; i++){
@@ -14,7 +15,6 @@ bool MagicalContainer::isPrime(int element){
         }
     }
     return true;
-    
 }
 
 
@@ -80,8 +80,8 @@ int MagicalContainer::BaseIterator::operator*(){
 
 //PrimeIterator class
 MagicalContainer::PrimeIterator::PrimeIterator(){}
-MagicalContainer::PrimeIterator::PrimeIterator(const MagicalContainer& magical){}
-MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator& asci){}
+MagicalContainer::PrimeIterator::PrimeIterator(MagicalContainer& magical){}
+MagicalContainer::PrimeIterator::PrimeIterator(const PrimeIterator& prime_iter){}
 
 MagicalContainer::PrimeIterator &MagicalContainer::PrimeIterator::operator=(const PrimeIterator &other){
     return (*this);
@@ -113,7 +113,9 @@ MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operat
 MagicalContainer::AscendingIterator& MagicalContainer::AscendingIterator::operator++(){return (*this);}
 
 MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::begin(){return (*this);}
-MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){return (*this);}
+MagicalContainer::AscendingIterator MagicalContainer::AscendingIterator::end(){
+    return (*this);
+}
 
 
 

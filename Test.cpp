@@ -47,5 +47,21 @@ TEST_CASE("add/remove the same element check"){
 }
 
 
-
-
+TEST_CASE("Exception Tests in adding/removing elements"){
+    SUBCASE("Adding elements test"){
+        MagicalContainer TheContainer;
+        CHECK_NOTHROW(TheContainer.addElement(1));
+        CHECK_NOTHROW(TheContainer.addElement(2));
+        CHECK_NOTHROW(TheContainer.addElement(3));
+        CHECK_NOTHROW(TheContainer.addElement(4));
+    }
+    SUBCASE("Removing elements test")
+    {
+        MagicalContainer TheContainer;
+        TheContainer.addElement(5);
+        TheContainer.addElement(6);
+        TheContainer.addElement(7);
+        CHECK_NOTHROW(TheContainer.removeElement(5));
+        CHECK_NOTHROW(TheContainer.removeElement(6));
+    }
+}
